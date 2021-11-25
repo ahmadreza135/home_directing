@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    </head>
+    <style>
+        .file {
+            width : 200px;
+            height : 200px;
+        }
+        
+
+        .button {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            left: 100px;
+            top: 253px;
+
+            background: #37D534;
+            border-radius: 30px;
+        }    
+    </style>
+    <body>
+        <center>
+            <input class="file" id="image-file" type="file"/><br><br><br>
+            <button class="button" onclick="nama()">click</button>
+            <script type="text/javascript">
+                function nama() {
+                    document.body.style.background = "#ff6666";
+                    let photo = document.getElementById("image-file").files[0];
+                    let formData = new FormData();
+                    formData.append("photo",photo);
+                    var filename = document.getElementById("image-file").value;
+                    fetch('/felan/', {method: "POST", body: photo})
+                    .then(response => response.json())
+                    .then(data => {
+                        document.body.style.background = "#ffffff";
+                        fetch('/felan/', {method: "POST", body: "fnfniihhname"+filename});
+                    })
+                    
+                }    
+            </script>
+        </center>    
+    </body>
+</html>    
